@@ -1,44 +1,6 @@
-import { useState } from 'react'
 import './About.css'
 
 function About() {
-  const [showEmailModal, setShowEmailModal] = useState(false)
-  const [form, setForm] = useState({ name: '', from: '', subject: '', message: '' })
-  const [sending, setSending] = useState(false)
-  const [sent, setSent] = useState(false)
-  const [error, setError] = useState('')
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
-
-  const handleSend = (e) => {
-    e.preventDefault()
-    const { name, from, subject, message } = form
-    if (!name || !from || !subject || !message) {
-      setError('Semua kolom wajib diisi.')
-      return
-    }
-    setError('')
-    setSending(true)
-
-    const mailto = `mailto:wisnubarakaa@gmail.com?subject=${encodeURIComponent(`[Portfolio] ${subject} - dari ${name}`)}&body=${encodeURIComponent(`Nama: ${name}\nEmail: ${from}\n\n${message}`)}`
-    window.location.href = mailto
-
-    setTimeout(() => {
-      setSending(false)
-      setSent(true)
-      setForm({ name: '', from: '', subject: '', message: '' })
-    }, 800)
-  }
-
-  const closeModal = () => {
-    setShowEmailModal(false)
-    setSent(false)
-    setError('')
-    setForm({ name: '', from: '', subject: '', message: '' })
-  }
-
   return (
     <div className="page">
       <h1 className="page-title">About Me</h1>
@@ -47,7 +9,7 @@ function About() {
       <div className="about-layout">
         {/* Profile card */}
         <div className="profile-card card">
-          <img src="/foto-wisnu.png" alt="Wisnu Akbar Aridho" className="profile-avatar-img" />
+          <div className="profile-avatar">👨‍💻</div>
           <h2 className="profile-name">Wisnu Akbar Aridho</h2>
           <p className="profile-role">Siswa SMK · Jurusan RPL · Kelas XI RPL 1</p>
           <div className="profile-divider" />
@@ -70,43 +32,16 @@ function About() {
             </div>
           </div>
           <div className="profile-socials">
-            <a
-              href="https://github.com/wisnubarakaa"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-btn"
-              style={{ background: '#1c2a3a', color: '#38bdf8' }}
-            >
+            <a href="#" className="social-btn" style={{ background: '#1c2a3a', color: '#38bdf8' }}>
               GitHub
             </a>
-            <a
-              href="https://linkedin.com/in/wisnubarakaa"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-btn"
-              style={{ background: '#1a2040', color: '#818cf8' }}
-            >
+            <a href="#" className="social-btn" style={{ background: '#1a2040', color: '#818cf8' }}>
               LinkedIn
             </a>
-            <a
-              href="https://instagram.com/wisnubarakaa"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-btn"
-              style={{ background: '#1a2a20', color: '#34d399' }}
-            >
+            <a href="#" className="social-btn" style={{ background: '#1a2a20', color: '#34d399' }}>
               Instagram
             </a>
           </div>
-
-          <div className="profile-divider" />
-
-          <button
-            className="email-btn"
-            onClick={() => setShowEmailModal(true)}
-          >
-            ✉️ Kirim Pesan
-          </button>
         </div>
 
         {/* Bio + Skills */}
@@ -187,71 +122,6 @@ function About() {
           </div>
         </div>
       </div>
-
-      {/* Email Modal */}
-      {showEmailModal && (
-        <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal-box" onClick={e => e.stopPropagation()}>
-            <button className="modal-close" onClick={closeModal}>✕</button>
-            <h2 className="modal-title">✉️ Kirim Pesan</h2>
-            <p className="modal-subtitle">Pesan akan dikirim ke wisnubarakaa@gmail.com</p>
-
-            {sent ? (
-              <div className="modal-success">
-                <div className="success-icon">✅</div>
-                <p>Email client terbuka! Silakan kirim pesan dari aplikasi emailmu.</p>
-                <button className="email-btn" onClick={closeModal}>Tutup</button>
-              </div>
-            ) : (
-              <form onSubmit={handleSend} className="email-form">
-                <div className="form-group">
-                  <label>Nama kamu</label>
-                  <input
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="Contoh: Budi Santoso"
-                    autoComplete="off"
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Email kamu</label>
-                  <input
-                    name="from"
-                    type="email"
-                    value={form.from}
-                    onChange={handleChange}
-                    placeholder="email@kamu.com"
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Subjek</label>
-                  <input
-                    name="subject"
-                    value={form.subject}
-                    onChange={handleChange}
-                    placeholder="Topik pesan"
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Pesan</label>
-                  <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="Tulis pesanmu di sini..."
-                    rows={4}
-                  />
-                </div>
-                {error && <p className="form-error">{error}</p>}
-                <button type="submit" className="email-btn" disabled={sending}>
-                  {sending ? 'Membuka email...' : '🚀 Kirim Sekarang'}
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   )
 }
