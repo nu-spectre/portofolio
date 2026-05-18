@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './Navbar.css'
 
@@ -10,27 +11,39 @@ const links = [
 
 function Navbar() {
   const location = useLocation()
+  const [open, setOpen] = useState(false)
 
   return (
-    <nav className="navbar">
-      <div className="navbar-inner">
-        <Link to="/" className="navbar-brand">
-          <span className="brand-icon">⚛</span>
-          <span className="brand-name">Wisnu Portofolio</span>
-        </Link>
-        <div className="navbar-links">
-          {links.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={`nav-link ${location.pathname === link.to ? 'active' : ''}`}
-            >
-              {link.label}
-            </Link>
-          ))}
+    <>
+      <nav className="navbar">
+        <div className="navbar-inner">
+          <Link to="/" className="navbar-brand" onClick={() => setOpen(false)}>
+            <span className="brand-icon">⚛</span>
+            <span className="brand-name">Wisnu Portofolio</span>
+          </Link>
+          <div className="navbar-links">
+            {links.map(link => (
+              <Link key={link.to} to={link.to}
+                className={`nav-link ${location.pathname === link.to ? 'active' : ''}`}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <button className={`hamburger ${open ? 'open' : ''}`} onClick={() => setOpen(!open)}>
+            <span /><span /><span />
+          </button>
         </div>
+      </nav>
+      <div className={`mobile-menu ${open ? 'open' : ''}`}>
+        {links.map(link => (
+          <Link key={link.to} to={link.to}
+            className={`nav-link ${location.pathname === link.to ? 'active' : ''}`}
+            onClick={() => setOpen(false)}>
+            {link.label}
+          </Link>
+        ))}
       </div>
-    </nav>
+    </>
   )
 }
 
