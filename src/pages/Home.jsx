@@ -17,9 +17,8 @@ function Home() {
         <p className="hero-role">Siswa SMKN 1 Purbalingga · Jurusan RPL</p>
         <p className="hero-bio">
           Saya adalah siswa kelas XI RPL 1 yang antusias dalam dunia web development.
-          Senang bereksperimen dengan teknologi baru,
-          dan terus belajar hal-hal baru setiap hari. 
-          Saya juga berharap untuk bisa masuk ke universitas impian saya lewat jurusan yang saya tekuni ini.
+          Senang membangun aplikasi dengan React, bereksperimen dengan teknologi baru,
+          dan terus belajar hal-hal baru setiap hari. Saya juga berharap untuk bisa masuk ke universitas impian saya lewat jurusan yang saya tekuni ini.
         </p>
         <div className="hero-cta">
           <Link to="/experience" className="btn btn-primary">Lihat Pengalaman →</Link>
