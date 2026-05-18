@@ -36,7 +36,7 @@ function Home() {
             { icon: '🌐', label: 'JavaScript', color: '#fbbf24' },
             { icon: '🎨', label: 'CSS', color: '#34d399' },
             { icon: '🗃️', label: 'LocalStorage', color: '#f87171' },
-            { icon: '🔗', label: 'REST API', color: '#fb923c' },
+            { icon: '🔗', label: 'API', color: '#fb923c' },
           ].map((skill) => (
             <div
               key={skill.label}
