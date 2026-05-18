@@ -71,7 +71,7 @@ function About() {
                 { label: 'JavaScript', level: 75 },
                 { label: 'HTML & CSS', level: 90 },
                 { label: 'Git & GitHub', level: 65 },
-                { label: 'REST API', level: 70 },
+                { label: 'API', level: 70 },
               ].map(skill => (
                 <div key={skill.label} className="skill-bar">
                   <div className="skill-bar-label">
