@@ -18,7 +18,7 @@ function Navbar() {
       <nav className="navbar">
         <div className="navbar-inner">
           <Link to="/" className="navbar-brand" onClick={() => setOpen(false)}>
-            <span className="brand-icon">⚛</span>
+          <img src="/react-logo.png" alt="logo" className="brand-logo" />
             <span className="brand-name">Wisnu Portofolio</span>
           </Link>
           <div className="navbar-links">

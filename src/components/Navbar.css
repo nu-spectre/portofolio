@@ -24,6 +24,12 @@
   text-decoration: none;
 }
 
+.brand-logo {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
 .brand-icon { font-size: 22px; }
 
 .brand-name {
